@@ -16,20 +16,36 @@ def main():
         if choice == "1":
             # TODO: ask "Amount: ", read it as a float, add it to balance, then print
             #   "New balance: <balance>" with the balance shown to 2 decimal places.
-            pass
+            amount = validNum()
+            balance += amount
+            print(f"New balance: ${balance:.2f}")
         elif choice == "2":
             # TODO: ask "Amount: " and read it as a float. If it is MORE than balance,
             #   print "Insufficient funds". Otherwise subtract it from balance and
             #   print "New balance: <balance>" (2 decimal places).
-            pass
+            amount = validNum()
+            if amount > balance:
+                print("Insufficient funds")
+            else:
+                balance -= amount
+                print(f"New balance: ${balance:.2f}")
         elif choice == "3":
             # TODO: print "Current balance: <balance>" (2 decimal places).
-            pass
+            print(f"Current balance: ${balance:.2f}")
         elif choice == "4":
             print("Goodbye")
             break
         else:
             print("Invalid choice")
+
+
+def validNum():
+    while True:
+        num = float(input("Amount: "))
+        if num <= 0:
+            print("Invalid amount, please enter a valid number.")
+        else:
+            return float(num)
 
 
 if __name__ == "__main__":
